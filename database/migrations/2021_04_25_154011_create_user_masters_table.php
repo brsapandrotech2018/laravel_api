@@ -16,8 +16,9 @@ class CreateUserMastersTable extends Migration
         Schema::create('user_masters', function (Blueprint $table) {
             $table->increments ('id');
 
+            $table->string('user_id')->nullable();
             $table->integer('user_type_id')->nullable();
-
+            $table->string('user_salt')->nullable();
             $table->string('user_display_name')->nullable();
 
             $table->string('user_name')->nullable();
@@ -26,12 +27,11 @@ class CreateUserMastersTable extends Migration
             $table->string('email_id')->nullable();
             $table->string('last_logon')->nullable();
             
-            $table->integer('added_by')->nullable();
-            $table->timestamp('added_on')->nullable();
-            $table->integer('modified_by')->nullable();
-            $table->timestamp('modified_on')->nullable();
-            
             $table->boolean('is_active')->nullable();
+
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();            
+            
             $table->timestamps();
         });
     }

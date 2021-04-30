@@ -20,11 +20,12 @@ class CreateCategoryItemsTable extends Migration
             $table->string('item_name');
             $table->float('unit_price')->nullable();
             $table->string('description')->nullable();
-            $table->integer('added_by')->nullable();
-            $table->timestamp('added_on')->nullable();
-            $table->integer('modified_by')->nullable();
-            $table->timestamp('modified_on')->nullable();
+
             $table->boolean('is_active')->nullable();
+
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();            
+            
             $table->timestamps();
         });
     }

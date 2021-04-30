@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\CategoryItemResource;
 use App\Models\CategoryItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryItemController extends Controller
 {
@@ -16,8 +17,12 @@ class CategoryItemController extends Controller
     public function index()
     {
         //
-        $category_item_items = CategoryItem::paginate(10);
-        return CategoryItemResource::collection($category_item_items);
+        $categories = DB::select("CALL getCategories()");
+        // echo "<pre>";
+        
+        
+        // $category_item_items = CategoryItem::paginate(10);
+        return $categories;
     }
 
     /**
@@ -64,8 +69,12 @@ class CategoryItemController extends Controller
     public function show($id)
     {
         //
-        $category_item = CategoryItem::findOrFail($id);
-        return new CategoryItemResource($category_item);
+        $category = DB::select("CALL getCategoriesWithID(".$id.")");
+        
+        print_r($category);
+        
+        // $category_item = CategoryItem::findOrFail($id);
+        // return new CategoryItemResource($category_item);
     }
 
     /**

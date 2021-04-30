@@ -19,11 +19,12 @@ class CreateCategoriesTable extends Migration
             $table->string('description')->nullable();
             $table->string('image_path')->nullable();
             $table->string('image_url')->nullable();
-            $table->integer('added_by')->nullable();
-            $table->timestamp('added_on')->nullable();
-            $table->integer('modified_by')->nullable();
-            $table->timestamp('modified_on')->nullable();
+
             $table->boolean('is_active')->nullable();
+
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();            
+            
             $table->timestamps();
             
         });
